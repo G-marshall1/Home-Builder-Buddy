@@ -1,15 +1,49 @@
+/* Reset some default styles */
+body, h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Basic styles for the header */
+header {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+/* Styles for the main content */
+main {
+  padding: 20px;
+  background-image: linear-gradient(to right, black 0%, white 80%);
+}
+
+section {
+  margin-bottom: 20px;
+}
+
 /* progress bar code */
 
 body {
   font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
-  color: #404040;
+  color: #232222;
   background: #2a2a2a;
-  color: white;
+  color: #ebe4e4;
 }
 
 .container {
-  margin: 60px auto;
-  width: 400px;
+  margin: 10px auto;
+  
+  width: 500px;
   text-align: center;
 }
 
@@ -210,7 +244,7 @@ body {
   display: inline-block;
   margin: 0 5px 20px;
   padding: 3px 8px;
-  color: #aaa;
+  color: #c7c1c1;
   text-shadow: 0 1px black;
   border-radius: 3px;
   cursor: pointer;
