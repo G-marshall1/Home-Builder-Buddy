@@ -42,7 +42,7 @@ body {
 
 .container {
   margin: 10px auto;
-  
+  margin-left: 15px;
   width: 500px;
   text-align: center;
 }
