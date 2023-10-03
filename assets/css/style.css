@@ -291,3 +291,7 @@ body {
     position: relative;
     top: 300px;
 }
+
+.maps {
+  display: flex; 
+}
