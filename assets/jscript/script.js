@@ -15,6 +15,28 @@ function initMap() {
 }
 
 
+    // Show work site on the map when the button is clicked
+    const showOnMapBtn = document.getElementById('showOnMapBtn');
+    showOnMapBtn.addEventListener('click', () => {
+        const workSiteInput = document.getElementById('workSite');
+        const workSiteLocation = workSiteInput.value;
+
+        // Use Mapbox Geocoding API to get the coordinates of the work site location
+        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${workSiteLocation}.json?access_token=${mapboxgl.accessToken}`)
+            .then(response => response.json())
+            .then(data => {
+                const coordinates = data.features[0].center;
+                map.setCenter(coordinates);
+            })
+            .catch(error => {
+                console.error('Error fetching location coordinates:', error);
+            });
+    });
+
+
+    var geoUrl ='https://api.mapbox.com/geocoding/v5/{endpoint}/{search_text}.json'
+
+
 
 
 
@@ -24,4 +46,6 @@ function initMap() {
 window.addEventListener('load', initMap);
 
 searchApi = 'AIzaSyAJLV4n89LbTC3wMircE35n1BWOAKH0xXI' 
+
+
 
