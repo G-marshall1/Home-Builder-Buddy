@@ -33,6 +33,7 @@ main {
 
 section {
   margin-bottom: 20px;
+  width: 50%;
 }
 
 /* progress bar code */
@@ -43,6 +44,19 @@ body {
   background: #2a2a2a;
   color: #ebe4e4;
   background-image: linear-gradient(to right, black 0%, white 80%);
+}
+
+.toDos {
+  position: absolute;
+}
+
+
+.projectName {
+  display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 40%;
 }
 
 .container {
@@ -258,4 +272,22 @@ body {
 .radio:checked + .label {
   color: white;
   background: rgba(0, 0, 0, 0.25);
+}
+
+.search {
+  position: relative;
+  color: black;
+  border: 3px solid;
+  height: 42rem;
+  float: right;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.contractors {
+      text-align-last: center;
+    position: relative;
+    top: 300px;
 }
