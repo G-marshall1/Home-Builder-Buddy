@@ -1,3 +1,8 @@
+
+
+
+
+
 //Current date display in header
 var currentDay = dayjs().format('dddd, MMMM D'); 
 $('#currentDay').text(currentDay);
@@ -13,6 +18,8 @@ function initMap() {
         zoom: 11
     });
 }
+
+
 
 
     // Show work site on the map when the button is clicked
