@@ -10,9 +10,21 @@ function initMap() {
     var map = new mapboxgl.Map({
         container: 'map', 
         style: 'mapbox://styles/mapbox/streets-v11',
-        center: [-111.8867, 40.75977],
+        //center: [-111.8867, 40.75977],
         zoom: 11
     });
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+          var userCoordinates = [position.coords.longitude, position.coords.latitude];
+          map.setCenter(userCoordinates);
+          var marker = new mapboxgl.Marker().setLngLat(userCoordinates).addTo(map);
+        }, error => {
+          console.error('Error getting user location:', error);
+        });
+      } else {
+        console.error('Geolocation is not supported by your browser.');
+      }
+         
 // Add an event listener for the map's load event.
 map.on('load', function() {
     var marker = new mapboxgl.Marker();
