@@ -1,7 +1,8 @@
-//Current date display in header
+// Current date display in header
 var currentDay = dayjs().format('dddd, MMMM D'); 
 $('#currentDay').text(currentDay);
 
+// Declare map as a global variable.
 var map;
 mapboxgl.accessToken = 'pk.eyJ1Ijoic2NvdHRnY29kZSIsImEiOiJjbG45bTQ5aDUwN3B2MmxwYmZlbG9xbWFiIn0.8RN9Vo08Ls6wKlD3U6hP0Q';
 
@@ -10,9 +11,9 @@ function initMap() {
     var map = new mapboxgl.Map({
         container: 'map', 
         style: 'mapbox://styles/mapbox/streets-v11',
-        //center: [-111.8867, 40.75977],
         zoom: 11
     });
+ // Obtain users coordinates if geolocation is allowed.   
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
           var userCoordinates = [position.coords.longitude, position.coords.latitude];
@@ -24,7 +25,6 @@ function initMap() {
       } else {
         console.error('Geolocation is not supported by your browser.');
       }
-         
 // Add an event listener for the map's load event.
 map.on('load', function() {
     var marker = new mapboxgl.Marker();
@@ -33,26 +33,25 @@ map.on('load', function() {
 
 // Listen for input changes
 workSiteSearch.addEventListener('input', function () {
-  // Get the entered location
+// Get the entered location
   var enteredLocation = workSiteSearch.value;
 
   if (!enteredLocation.trim()) {
-    // If the search bar is empty, set the map back to the original position
+// If the search bar is empty, set the map back to the original position
     map.setCenter([-111.8867, 40.75977]);
     marker.remove(); // Remove the marker if it exists
     return;
   }
 
-  // Use Mapbox Geocoding API to get the coordinates for the entered location
+// Use Mapbox Geocoding API to get the coordinates for the entered location
   fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(enteredLocation)}.json?access_token=${mapboxgl.accessToken}`)
     .then(response => response.json())
     .then(data => {
-      // Check if the expected properties are available in the response
+// Check if the expected properties are available in the response
         if (data.features && data.features.length > 0 && data.features[0].geometry) 
-        // Get the coordinates from the API response
+// Get the coordinates from the API response
       var coordinates = data.features[0].geometry.coordinates;
-
-      // Set the map center and update the marker
+// Set the map center and update the marker
       map.setCenter(coordinates);
       marker.setLngLat(coordinates).addTo(map);
     })
@@ -62,8 +61,6 @@ workSiteSearch.addEventListener('input', function () {
     });
 });
 }
-
-var geoUrl ='https://api.mapbox.com/geocoding/v5/{endpoint}/{search_text}.json'
 
 // Call the initMap function when the page loads
 window.addEventListener('load', initMap);
