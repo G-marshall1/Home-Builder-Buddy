@@ -24,6 +24,13 @@ workSiteSearch.addEventListener('input', function () {
   // Get the entered location
   var enteredLocation = workSiteSearch.value;
 
+  if (!enteredLocation.trim()) {
+    // If the search bar is empty, set the map back to the original position
+    map.setCenter([-111.8867, 40.75977]);
+    marker.remove(); // Remove the marker if it exists
+    return;
+  }
+
   // Use Mapbox Geocoding API to get the coordinates for the entered location
   fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(enteredLocation)}.json?access_token=${mapboxgl.accessToken}`)
     .then(response => response.json())
