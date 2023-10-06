@@ -47,6 +47,10 @@ body {
   font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
   color: #232222;
   background: rgb(33, 39, 99);
+  display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    z-index: 0;
   /* color: #2e2424; */
   /* background-image: linear-gradient(to right, black 0%, white 80%); */
 }
@@ -63,6 +67,7 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     width: 40%;
+z-index: 1;
 }
 
 .container {
