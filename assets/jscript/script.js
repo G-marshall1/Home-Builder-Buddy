@@ -67,5 +67,24 @@ window.addEventListener('load', initMap);
 
 searchApi = 'AIzaSyAJLV4n89LbTC3wMircE35n1BWOAKH0xXI' 
 
+document.getElementById('showCurrentLocation').addEventListener('click', function() {
+// Check if geolocation is supported
+    if (navigator.geolocation) {
+// Get the current location
+        navigator.geolocation.getCurrentPosition(function(position) {
+// Extract latitude and longitude
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
 
+// Call the reverse geocoding API to get the address
+            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`)
+                .then(response => response.json())
+                .then(data => {
+// Display the address in the HTML
+                    var address = data.display_name;
+                    document.getElementById('locationOutput').textContent = `You are here--> ${address}`;
+                })
+        });
+    }
+});
 
