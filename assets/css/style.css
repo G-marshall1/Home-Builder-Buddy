@@ -329,3 +329,8 @@ z-index: 1;
 .contractors>div>h2, h3 {
 color: white;
 }
+
+footer {
+  background-color: rgb(33, 39, 99) !important ;
+  box-shadow: none !important;
+}

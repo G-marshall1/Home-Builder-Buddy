@@ -62,6 +62,14 @@ workSiteSearch.addEventListener('input', function () {
 });
 }
 
+//add event listener for the button in the html id showOnMapBtn to pull the address from the input field called workSite and store its value in local storage
+document.getElementById('showOnMapBtn').addEventListener('click', function() {
+    var workSite = document.getElementById('workSite').value;
+    localStorage.setItem('workSite', workSite);
+}
+);
+
+
 // Call the initMap function when the page loads
 window.addEventListener('load', initMap);
 
